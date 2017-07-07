@@ -1,12 +1,26 @@
-<div class="container">
-<h1>Mr. Cocktail</h1>
-<%= link_to "Add a cocktail", new_cocktail_path %>
-  <% @cocktails.each do |cocktail| %>
-    <div class="cocktails">
-      <h2><%= link_to cocktail.name, cocktail_path(cocktail.id) %></h2>
-      <ul>
-        <%= link_to "edit", edit_cocktail_path(cocktail) %>
-      </ul>
-    </div>
-  <% end %>
+<div class="header text-center">
+  <h1>Mr. Cocktail</h1>
+</div>
+<div class="body">
+  <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-success add-cocktail" %>
+      <div class="container">
+        <div class="row">
+          <% @cocktails.each do |cocktail| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="cocktails">
+            <h2 class="cocktail-name text-center"><%= link_to cocktail.name, cocktail_path(cocktail.id) %></h2>
+            <div class="cocktails-content">
+              <%= cl_image_tag cocktail.photo, height: 300, width: 400, crop: :fill, class: "cocktail-img" %>
+              <div class="edit-delete text-left">
+                <ul class="cocktails-list">
+                  <li><%= link_to "edit", edit_cocktail_path(cocktail) %></li>
+                  <li><%= link_to 'delete', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+              </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
 </div>

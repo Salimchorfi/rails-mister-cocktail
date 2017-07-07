@@ -1,4 +1,22 @@
-<h2><%= @cocktail.name %></h2>
-<ul>
-  <li><%= link_to "Edit cocktail", edit_cocktail_path(@cocktail) %></li>
-</ul>
+<div class="show-main-container text-center">
+  <h2 id="show-title"><%= @cocktail.name %></h2>
+  <div class="show-container">
+    <div class="image">
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill, class: "show-img" %>
+    </div>
+    <div class="description">
+      <ul>
+        <% @cocktail.doses.each do |dose| %>
+          <li><%= dose[:description] %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="options">
+      <ul class="list-inline">
+        <li><%= link_to "edit", edit_cocktail_path(@cocktail) %></li>
+        <li><%= link_to "add a dose", new_cocktail_dose_path(@cocktail) %></li>
+        <li><%= link_to "back", cocktails_path(@cocktail) %></li>
+      </ul>
+    </div>
+  </div>
+</div>

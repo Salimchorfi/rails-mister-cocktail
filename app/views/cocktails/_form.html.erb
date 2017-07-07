@@ -1,5 +1,8 @@
-<%= form_for @cocktail do |f| %>
-  <%= f.label :name, "Enter a name" %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="simple-form">
+  <%= simple_form_for(@cocktail) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit %>
+  <% end %>
+</div>
